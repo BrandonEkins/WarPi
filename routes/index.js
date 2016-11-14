@@ -6,10 +6,12 @@
 //     res.sendFile('index.html', { root: 'public' });
 // });
 
-
+var express = require('express');
 var app = require('express')();
 var http = require('http').Server(app);
 var io = require('socket.io').listen(http);
+
+app.use(express.static('public'));
 
 app.get('/', function(req, res, next) {
     res.sendFile('index.html', { root: 'public' });
