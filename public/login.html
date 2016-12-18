@@ -1,0 +1,31 @@
+<html>
+
+<head>
+    <title>Login</title>
+</head>
+
+<body ng-app="loginApp" ng-controller="loginController">
+    <form ng-submit="">
+        <input type="text">
+        <input type="text">
+        <input type="submit">
+    </form>
+    <script src="https://www.gstatic.com/firebasejs/3.6.1/firebase.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angularFire/2.1.0/angularfire.js"></script>
+    <script src="javascripts/loginController.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyDQnbQNioVr6yJUCqwFioOjqDgj0qjd69w",
+            authDomain: "warpi-c2a8c.firebaseapp.com",
+            databaseURL: "https://warpi-c2a8c.firebaseio.com",
+            storageBucket: "warpi-c2a8c.appspot.com",
+            messagingSenderId: "586364425770"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+</body>
+
+</html>

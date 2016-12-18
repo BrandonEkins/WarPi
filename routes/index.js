@@ -9,43 +9,29 @@
 var express = require('express');
 var app = require('express')();
 var http = require('http').Server(app);
-var io = require('socket.io').listen(http);
-var shuffle = require('shuffle-list');
+//var firebase = require('firebase');
 app.use(express.static('public'));
-
+// var config = {
+//     apiKey: "AIzaSyDQnbQNioVr6yJUCqwFioOjqDgj0qjd69w",
+//     authDomain: "warpi-c2a8c.firebaseapp.com",
+//     databaseURL: "https://warpi-c2a8c.firebaseio.com",
+//     storageBucket: "warpi-c2a8c.appspot.com",
+//     messagingSenderId: "586364425770"
+// };
+// firebase.initializeApp(config);
+//var database = firebase.database();
 app.get('/', function(req, res, next) {
-    res.sendFile('index.html', { root: 'public' });
+    console.log(req);
+    res.sendFile('login.html', { root: 'public' });
 });
 
-io.on('connection', function(socket) {
-    console.log('a user connected');
-    socket.on('chat message', function(msg) {
-        console.log('Chat message: ' + msg);
-        io.emit('chat message', msg);
-    });
-});
-
-function CreateDeck() {
-    var deck = [];
-    var Blankcard = {
-        suit: "",
-        number: "",
-        img: "" //for this make img files that are Spades1...Hearts13 then it can programaticly load them
-    }
-    var suits = ["Spades", "Clubs", "Diamonds", "Hearts"];
-
-    for (var i = 1; i < 14; i++) {
-        for (var s = 0; s < suits.length; s++) {
-            var card = { suit: suits[s], number: i, img: suits[s] + i + '.jpg' }
-            deck.push(card)
-
-        }
-    }
-    console.log(deck);
-    deck = shuffle(deck);
-    return deck;
-}
-CreateDeck();
+// io.on('connection', function(socket) {
+//     console.log('a user connected');
+//     socket.on('chat message', function(msg) {
+//         console.log('Chat message: ' + msg);
+//         io.emit('chat message', msg);
+//     });
+// });
 http.listen(3000, function() {
     console.log('listening on *:3000');
 });
